@@ -1,0 +1,152 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Personas",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/personas": {
+            "get": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Listar personas",
+                "operationId": "7e985f1ebad9fc9882314d316052156e",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Crear persona",
+                "operationId": "6106fc75aa53b6dd8e9793a3a9ae9c39",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "apellido"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "apellido": {
+                                        "type": "string"
+                                    },
+                                    "fecha_nacimiento": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "correo": {
+                                        "type": "string"
+                                    },
+                                    "rol": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Creado"
+                    }
+                }
+            }
+        },
+        "/api/personas/{id}": {
+            "put": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Actualizar persona",
+                "operationId": "baa0b999915af58e8067773095e74fbc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string"
+                                    },
+                                    "apellido": {
+                                        "type": "string"
+                                    },
+                                    "fecha_nacimiento": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "telefono": {
+                                        "type": "string"
+                                    },
+                                    "correo": {
+                                        "type": "string"
+                                    },
+                                    "rol": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Actualizado"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Personas"
+                ],
+                "summary": "Eliminar persona",
+                "operationId": "7cc9a0fd7eb8d472c97094a96736b306",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Eliminado"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Personas",
+            "description": "Personas"
+        }
+    ]
+}
