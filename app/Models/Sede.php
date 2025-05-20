@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Model
+use App\Models\Direccion;
+
+class Sede extends Model
 {
     use HasFactory;
     /**
@@ -13,8 +15,15 @@ class Persona extends Model
      *
      * @var array
      */
-    protected $table = 'personas';
+    protected $table = 'sedes';
+
     protected $fillable = [
-        'nombre', 'apellido', 'fecha_nacimiento', 'telefono', 'correo', 'rol'
+        'nombre','direccion','id_direccion'
     ];
+
+    public function direccion()
+    {
+        return $this->belongsTo(Direccion::class, 'id_direccion');
+    }
 }
+

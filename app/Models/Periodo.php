@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Persona extends Model
+class Periodo extends Model
 {
     use HasFactory;
     /**
@@ -13,8 +13,9 @@ class Persona extends Model
      *
      * @var array
      */
-    protected $table = 'personas';
+    protected $table = 'periodos';
     protected $fillable = [
-        'nombre', 'apellido', 'fecha_nacimiento', 'telefono', 'correo', 'rol'
+        'nombre', 'fecha_inicio', 'fecha_fin'
     ];
 }
+

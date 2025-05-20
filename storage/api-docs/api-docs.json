@@ -1,10 +1,1760 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "API Personas",
-        "version": "1.0"
+        "title": "API de Personas y Aulas",
+        "version": "1.0.0"
     },
     "paths": {
+        "/api/aulas": {
+            "get": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Listar aulas",
+                "operationId": "b26bb8375b61d31b823e3c698cc3ae8f",
+                "responses": {
+                    "200": {
+                        "description": "Lista de aulas"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Crear aula",
+                "operationId": "cd6e8064e2fcadb282ccdbc039462f71",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "id_sede",
+                                    "codigo",
+                                    "capacidad",
+                                    "tipo",
+                                    "descripcion"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan"
+                                    },
+                                    "id_sede": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "codigo": {
+                                        "type": "integer",
+                                        "example": 101
+                                    },
+                                    "capacidad": {
+                                        "type": "integer",
+                                        "example": 30
+                                    },
+                                    "tipo": {
+                                        "type": "string",
+                                        "example": "aula"
+                                    },
+                                    "descripcion": {
+                                        "type": "string",
+                                        "example": "Aula de matemáticas"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Aula creada"
+                    }
+                }
+            }
+        },
+        "/api/aulas/{id}": {
+            "put": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Actualizar aula",
+                "operationId": "6b89a6fdcc6702721ec908b6bc9bb64a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la aula",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "id_sede",
+                                    "codigo",
+                                    "capacidad",
+                                    "tipo",
+                                    "descripcion"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan"
+                                    },
+                                    "id_sede": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "codigo": {
+                                        "type": "integer",
+                                        "example": 101
+                                    },
+                                    "capacidad": {
+                                        "type": "integer",
+                                        "example": 30
+                                    },
+                                    "tipo": {
+                                        "type": "string",
+                                        "example": "aula"
+                                    },
+                                    "descripcion": {
+                                        "type": "string",
+                                        "example": "Aula de matemáticas"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Aula actualizada"
+                    },
+                    "404": {
+                        "description": "Aula no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Aulas"
+                ],
+                "summary": "Eliminar aula",
+                "operationId": "8eba2a81113b30099462c4bf1fb17099",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la aula",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Aula eliminada"
+                    },
+                    "404": {
+                        "description": "Aula no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/ciudades": {
+            "get": {
+                "tags": [
+                    "Ciudades"
+                ],
+                "summary": "Listar ciudades",
+                "operationId": "1d7f410343dc253f9396a53b4cebf853",
+                "responses": {
+                    "200": {
+                        "description": "Lista de ciudades"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Ciudades"
+                ],
+                "summary": "Crear ciudad",
+                "operationId": "72e679555bad30853c49755de8505641",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "id_pais"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan"
+                                    },
+                                    "id_pais": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ciudad creada"
+                    }
+                }
+            }
+        },
+        "/api/ciudades/{id}": {
+            "put": {
+                "tags": [
+                    "Ciudades"
+                ],
+                "summary": "Actualizar ciudad",
+                "operationId": "d6e78851d2536a726294c972f8d0a694",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la ciudad",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "id_pais"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan"
+                                    },
+                                    "id_pais": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ciudad actualizada"
+                    },
+                    "404": {
+                        "description": "Ciudad no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Ciudades"
+                ],
+                "summary": "Eliminar ciudad",
+                "operationId": "09476657ede195b4ffbc9750f42d6914",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la ciudad",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Ciudad eliminada"
+                    },
+                    "404": {
+                        "description": "Ciudad no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/clases": {
+            "get": {
+                "tags": [
+                    "Clases"
+                ],
+                "summary": "Listar clases",
+                "operationId": "6b51d92341941d3b22829adbd68dfa7b",
+                "responses": {
+                    "200": {
+                        "description": "Lista de clases"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clases"
+                ],
+                "summary": "Crear clase",
+                "operationId": "f55bdd808ee3b056f884b4b179a328f5",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "apellido"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan"
+                                    },
+                                    "apellido": {
+                                        "type": "string",
+                                        "example": "Pérez"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Clase creada"
+                    }
+                }
+            }
+        },
+        "/api/clases/{id}": {
+            "put": {
+                "tags": [
+                    "Clases"
+                ],
+                "summary": "Actualizar clase",
+                "operationId": "82a086a91ab3bf2e109e92684fadbb34",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "apellido"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Juan"
+                                    },
+                                    "apellido": {
+                                        "type": "string",
+                                        "example": "Pérez"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Clase actualizada"
+                    },
+                    "404": {
+                        "description": "Clase no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clases"
+                ],
+                "summary": "Eliminar clase",
+                "operationId": "bb3f338fc77b4722fb422a2063159a6b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Clase eliminada"
+                    },
+                    "404": {
+                        "description": "Clase no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/clases_estudiantes": {
+            "get": {
+                "tags": [
+                    "Clases Estudiantes"
+                ],
+                "summary": "Listar clases_estudiantes",
+                "operationId": "c1be90931049e9080eba53c6a9a2002c",
+                "responses": {
+                    "200": {
+                        "description": "Lista de clases_estudiantes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clases Estudiantes"
+                ],
+                "summary": "Crear clase_estudiante",
+                "operationId": "b7e81ebd3589a81cb079a53b6db84b21",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_clase",
+                                    "id_estudiante"
+                                ],
+                                "properties": {
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_estudiante": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Clase_Estudiante creada"
+                    }
+                }
+            }
+        },
+        "/api/clases_estudiantes/{id}": {
+            "put": {
+                "tags": [
+                    "Clases Estudiantes"
+                ],
+                "summary": "Actualizar clase_estudiante",
+                "operationId": "da5a1c5d50a5e82d56fc5934bb99c74d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase_estudiante",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_clase",
+                                    "id_estudiante"
+                                ],
+                                "properties": {
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_estudiante": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Clase_Estudiante actualizada"
+                    },
+                    "404": {
+                        "description": "Clase_Estudiante no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clases Estudiantes"
+                ],
+                "summary": "Eliminar clase_estudiante",
+                "operationId": "859e8fb4c7e79fb3f223a0f24fc0b594",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase_estudiante",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Clase_Estudiante eliminada"
+                    },
+                    "404": {
+                        "description": "Clase_Estudiante no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/clases_horarios": {
+            "get": {
+                "tags": [
+                    "Clases Horarios"
+                ],
+                "summary": "Listar clases_horarios",
+                "operationId": "be078db6aeeca21c12d566271aae3e18",
+                "responses": {
+                    "200": {
+                        "description": "Lista de clases_horarios"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clases Horarios"
+                ],
+                "summary": "Crear clase_horario",
+                "operationId": "8ec1c50abcca438b26ae572d9a8bd734",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_clase",
+                                    "id_horario"
+                                ],
+                                "properties": {
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_horario": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Clase_Horario creada"
+                    }
+                }
+            }
+        },
+        "/api/clases_horarios/{id}": {
+            "put": {
+                "tags": [
+                    "Clases Horarios"
+                ],
+                "summary": "Actualizar clase_horario",
+                "operationId": "f73ab11c196808e9ecc8765ecbf00443",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase_horario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_clase",
+                                    "id_estudiante"
+                                ],
+                                "properties": {
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_estudiante": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Clase_Horario actualizada"
+                    },
+                    "404": {
+                        "description": "Clase_Horario no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clases Horarios"
+                ],
+                "summary": "Eliminar clase_horario",
+                "operationId": "a4efb15ba215cc59a1cd549b92f9d1bc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase_horario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Clase_Horario eliminada"
+                    },
+                    "404": {
+                        "description": "Clase_Horario no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/clases_profesores": {
+            "get": {
+                "tags": [
+                    "Clases Profesores"
+                ],
+                "summary": "Listar clases_profesores",
+                "operationId": "5da4189744640ac1e2626ae7d50cabe7",
+                "responses": {
+                    "200": {
+                        "description": "Lista de clases_profesores"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Clases Profesores"
+                ],
+                "summary": "Crear clase_profesor",
+                "operationId": "7bb8f563087b8c7f9a7ef160776c13b0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_clase",
+                                    "id_profesor"
+                                ],
+                                "properties": {
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_profesor": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Clase_Profesor creada"
+                    }
+                }
+            }
+        },
+        "/api/clases_profesores/{id}": {
+            "put": {
+                "tags": [
+                    "Clases Profesores"
+                ],
+                "summary": "Actualizar clase_profesor",
+                "operationId": "0ffd630b56501dc33b1e76e79221061e",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase_profesor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_clase",
+                                    "id_profesor"
+                                ],
+                                "properties": {
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_profesor": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Clase_Profesor actualizada"
+                    },
+                    "404": {
+                        "description": "Clase_Profesor no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Clases Profesores"
+                ],
+                "summary": "Eliminar clase_profesor",
+                "operationId": "8a2e55769b8c1ff54929588d23c941b4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la clase_profesor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Clase_Profesor eliminada"
+                    },
+                    "404": {
+                        "description": "Clase_Profesor no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/direcciones": {
+            "get": {
+                "tags": [
+                    "Direcciones"
+                ],
+                "summary": "Listar direcciones",
+                "operationId": "5804759279a63322458aea4bbde01e2b",
+                "responses": {
+                    "200": {
+                        "description": "Lista de direcciones"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Direcciones"
+                ],
+                "summary": "Crear direccion",
+                "operationId": "a8d160b54e268d0a7cc954733f788b15",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "calle",
+                                    "numero",
+                                    "id_ciudad"
+                                ],
+                                "properties": {
+                                    "calle": {
+                                        "type": "string",
+                                        "example": "Calle 1"
+                                    },
+                                    "numero": {
+                                        "type": "integer",
+                                        "example": 101
+                                    },
+                                    "id_ciudad": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Direccion creada"
+                    }
+                }
+            }
+        },
+        "/api/direcciones/{id}": {
+            "put": {
+                "tags": [
+                    "Direcciones"
+                ],
+                "summary": "Actualizar direccion",
+                "operationId": "ec17a1a1a38f1afc31806f94c89a0b44",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la direccion",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "calle",
+                                    "numero",
+                                    "id_ciudad"
+                                ],
+                                "properties": {
+                                    "calle": {
+                                        "type": "string",
+                                        "example": "Calle 1"
+                                    },
+                                    "numero": {
+                                        "type": "integer",
+                                        "example": 101
+                                    },
+                                    "id_ciudad": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Direccion actualizada"
+                    },
+                    "404": {
+                        "description": "Direccion no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Direcciones"
+                ],
+                "summary": "Eliminar direccion",
+                "operationId": "ba12ad8725b2ea572c0a7409772ee75b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la direccion",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Direccion eliminada"
+                    },
+                    "404": {
+                        "description": "Direccion no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/estudiantes": {
+            "get": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "Listar estudiantes",
+                "operationId": "091a7860e8bd03fe69d050b661fcf2e0",
+                "responses": {
+                    "200": {
+                        "description": "Lista de estudiantes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "Crear estudiante",
+                "operationId": "e89a16a793f0cf5eb83f7bbd0ba2802b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_persona"
+                                ],
+                                "properties": {
+                                    "id_persona": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Estudiante creada"
+                    }
+                }
+            }
+        },
+        "/api/estudiantes/{id}": {
+            "put": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "Actualizar estudiante",
+                "operationId": "696d8b5dcaba4e4af425cea19b104eba",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la estudiante",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_persona"
+                                ],
+                                "properties": {
+                                    "id_persona": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Estudiante actualizada"
+                    },
+                    "404": {
+                        "description": "Estudiante no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Estudiantes"
+                ],
+                "summary": "Eliminar estudiante",
+                "operationId": "73804a9ea78cfb8c43a1de6279b2f302",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la estudiante",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Estudiante eliminada"
+                    },
+                    "404": {
+                        "description": "Estudiante no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/grados": {
+            "get": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Listar grados",
+                "operationId": "d8d5bea7d7ccf255046bfafccd582c62",
+                "responses": {
+                    "200": {
+                        "description": "Lista de grados"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Crear grado",
+                "operationId": "c89c65f572f53c52615db173936122cc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "id_profesor"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Grado 1"
+                                    },
+                                    "id_profesor": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Grado creada"
+                    }
+                }
+            }
+        },
+        "/api/grados/{id}": {
+            "put": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Actualizar grado",
+                "operationId": "9afd4729054e8d9ba7dea405c450b682",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la grado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "id_profesor"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Grado 1"
+                                    },
+                                    "id_profesor": {
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Grado actualizada"
+                    },
+                    "404": {
+                        "description": "Grado no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Eliminar grado",
+                "operationId": "8b1f1f150ec0732ca99d483d40476d73",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la grado",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Grado eliminada"
+                    },
+                    "404": {
+                        "description": "Grado no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/horarios": {
+            "get": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Listar horarios",
+                "operationId": "b7d2926fab8b10719ce5669cbd456891",
+                "responses": {
+                    "200": {
+                        "description": "Lista de horarios"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Crear horario",
+                "operationId": "8ee72160883ee946cf29142423ecab47",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "dia",
+                                    "hora_inicio",
+                                    "hora_fin"
+                                ],
+                                "properties": {
+                                    "dia": {
+                                        "type": "string",
+                                        "example": "Lunes"
+                                    },
+                                    "hora_inicio": {
+                                        "type": "string",
+                                        "example": "08:00"
+                                    },
+                                    "hora_fin": {
+                                        "type": "string",
+                                        "example": "10:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Horario creada"
+                    }
+                }
+            }
+        },
+        "/api/horarios/{id}": {
+            "put": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Actualizar horario",
+                "operationId": "2cd1d40182ef6a1e27ef8bb4b6c6d569",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la horario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "dia",
+                                    "hora_inicio",
+                                    "hora_fin"
+                                ],
+                                "properties": {
+                                    "dia": {
+                                        "type": "string",
+                                        "example": "Lunes"
+                                    },
+                                    "hora_inicio": {
+                                        "type": "string",
+                                        "example": "08:00"
+                                    },
+                                    "hora_fin": {
+                                        "type": "string",
+                                        "example": "10:00"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Horario actualizada"
+                    },
+                    "404": {
+                        "description": "Horario no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Grados"
+                ],
+                "summary": "Eliminar horario",
+                "operationId": "32d442c036ba3491c0a723cf6d1c9afc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la horario",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Horario eliminada"
+                    },
+                    "404": {
+                        "description": "Horario no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/notas": {
+            "get": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Listar notas",
+                "operationId": "892bcab96736b46ebbe918cf5221beb3",
+                "responses": {
+                    "200": {
+                        "description": "Lista de notas"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Crear nota",
+                "operationId": "491bb68c7b3c394b2018a5e50c970a27",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_estudiante",
+                                    "id_clase",
+                                    "id_periodo",
+                                    "valor",
+                                    "fecha"
+                                ],
+                                "properties": {
+                                    "id_estudiante": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_periodo": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "valor": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-10-01"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Nota creada"
+                    }
+                }
+            }
+        },
+        "/api/notas/{id}": {
+            "put": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Actualizar nota",
+                "operationId": "c85ce4846c6cedf63f1c808b47016c77",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la nota",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_estudiante",
+                                    "id_clase",
+                                    "id_periodo",
+                                    "valor",
+                                    "fecha"
+                                ],
+                                "properties": {
+                                    "id_estudiante": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_clase": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "id_periodo": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "valor": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-10-01"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Nota actualizada"
+                    },
+                    "404": {
+                        "description": "Nota no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notas"
+                ],
+                "summary": "Eliminar nota",
+                "operationId": "8ac21ed247e7de1cde0259aec7474f27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la nota",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Nota eliminada"
+                    },
+                    "404": {
+                        "description": "Nota no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/paises": {
+            "get": {
+                "tags": [
+                    "Paises"
+                ],
+                "summary": "Listar paises",
+                "operationId": "ce365c0f6b12dbcdde55a93cdb75d731",
+                "responses": {
+                    "200": {
+                        "description": "Lista de paises"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Paises"
+                ],
+                "summary": "Crear pais",
+                "operationId": "f1cfa1786ab3219fbaeda6641afd4f51",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Argentina"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Pais creada"
+                    }
+                }
+            }
+        },
+        "/api/paises/{id}": {
+            "put": {
+                "tags": [
+                    "Paises"
+                ],
+                "summary": "Actualizar pais",
+                "operationId": "56c39457de46fd84286a2f1c931fec3a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la pais",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Argentina"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Pais actualizada"
+                    },
+                    "404": {
+                        "description": "Pais no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Paises"
+                ],
+                "summary": "Eliminar pais",
+                "operationId": "96b4104412a97539fc6ab69ae117ba4d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la pais",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Pais eliminada"
+                    },
+                    "404": {
+                        "description": "Pais no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/periodos": {
+            "get": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Listar periodos",
+                "operationId": "d869f9ab2fcd15a45725b779e09d71ef",
+                "responses": {
+                    "200": {
+                        "description": "Lista de periodos"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Crear periodo",
+                "operationId": "9321abd6dc046107d6ed2705b7ee5442",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "fecha_inicio",
+                                    "fecha_fin"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "2023-2024"
+                                    },
+                                    "fecha_inicio": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-01-01"
+                                    },
+                                    "fecha_fin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-12-31"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Periodo creada"
+                    }
+                }
+            }
+        },
+        "/api/periodos/{id}": {
+            "put": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Actualizar periodo",
+                "operationId": "2739500d3d30e53ca83371e40f3ddeb8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la periodo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "fecha_inicio",
+                                    "fecha_fin"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "2023-2024"
+                                    },
+                                    "fecha_inicio": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-01-01"
+                                    },
+                                    "fecha_fin": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2023-12-31"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Periodo actualizada"
+                    },
+                    "404": {
+                        "description": "Periodo no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Periodos"
+                ],
+                "summary": "Eliminar periodo",
+                "operationId": "65fa2a708900a9ddd1b5a060146095ec",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la periodo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Periodo eliminada"
+                    },
+                    "404": {
+                        "description": "Periodo no encontrada"
+                    }
+                }
+            }
+        },
         "/api/personas": {
             "get": {
                 "tags": [
@@ -14,7 +1764,7 @@
                 "operationId": "7e985f1ebad9fc9882314d316052156e",
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "Lista de personas"
                     }
                 }
             },
@@ -35,23 +1785,12 @@
                                 ],
                                 "properties": {
                                     "nombre": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "Juan"
                                     },
                                     "apellido": {
-                                        "type": "string"
-                                    },
-                                    "fecha_nacimiento": {
                                         "type": "string",
-                                        "format": "date"
-                                    },
-                                    "telefono": {
-                                        "type": "string"
-                                    },
-                                    "correo": {
-                                        "type": "string"
-                                    },
-                                    "rol": {
-                                        "type": "string"
+                                        "example": "Pérez"
                                     }
                                 },
                                 "type": "object"
@@ -61,7 +1800,7 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Creado"
+                        "description": "Persona creada"
                     }
                 }
             }
@@ -77,6 +1816,7 @@
                     {
                         "name": "id",
                         "in": "path",
+                        "description": "ID de la persona",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -84,28 +1824,22 @@
                     }
                 ],
                 "requestBody": {
+                    "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
+                                "required": [
+                                    "nombre",
+                                    "apellido"
+                                ],
                                 "properties": {
                                     "nombre": {
-                                        "type": "string"
+                                        "type": "string",
+                                        "example": "Juan"
                                     },
                                     "apellido": {
-                                        "type": "string"
-                                    },
-                                    "fecha_nacimiento": {
                                         "type": "string",
-                                        "format": "date"
-                                    },
-                                    "telefono": {
-                                        "type": "string"
-                                    },
-                                    "correo": {
-                                        "type": "string"
-                                    },
-                                    "rol": {
-                                        "type": "string"
+                                        "example": "Pérez"
                                     }
                                 },
                                 "type": "object"
@@ -115,7 +1849,10 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Actualizado"
+                        "description": "Persona actualizada"
+                    },
+                    "404": {
+                        "description": "Persona no encontrada"
                     }
                 }
             },
@@ -129,6 +1866,7 @@
                     {
                         "name": "id",
                         "in": "path",
+                        "description": "ID de la persona",
                         "required": true,
                         "schema": {
                             "type": "integer"
@@ -137,7 +1875,256 @@
                 ],
                 "responses": {
                     "204": {
-                        "description": "Eliminado"
+                        "description": "Persona eliminada"
+                    },
+                    "404": {
+                        "description": "Persona no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/profesores": {
+            "get": {
+                "tags": [
+                    "Profesores"
+                ],
+                "summary": "Listar profesores",
+                "operationId": "959661a2a88cfe925d42e9b20fba4c72",
+                "responses": {
+                    "200": {
+                        "description": "Lista de profesores"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Profesores"
+                ],
+                "summary": "Crear profesor",
+                "operationId": "73c3ac792ba78f4476335c8ca7671930",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_persona",
+                                    "enfoque"
+                                ],
+                                "properties": {
+                                    "id_persona": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "enfoque": {
+                                        "type": "string",
+                                        "example": "Matematica"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Profesor creada"
+                    }
+                }
+            }
+        },
+        "/api/profesores/{id}": {
+            "put": {
+                "tags": [
+                    "Profesores"
+                ],
+                "summary": "Actualizar profesor",
+                "operationId": "c9c2004d84935af075529c69c566c485",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la profesor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "id_persona",
+                                    "enfoque"
+                                ],
+                                "properties": {
+                                    "id_persona": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "enfoque": {
+                                        "type": "string",
+                                        "example": "Matematica"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profesor actualizada"
+                    },
+                    "404": {
+                        "description": "Profesor no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Profesores"
+                ],
+                "summary": "Eliminar profesor",
+                "operationId": "77480c9a7b80ecf430f2e7b47a885517",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la profesor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Profesor eliminada"
+                    },
+                    "404": {
+                        "description": "Profesor no encontrada"
+                    }
+                }
+            }
+        },
+        "/api/sedes": {
+            "get": {
+                "tags": [
+                    "Sedes"
+                ],
+                "summary": "Listar sedes",
+                "operationId": "957205a3296ece9539db8919256438c0",
+                "responses": {
+                    "200": {
+                        "description": "Lista de sedes"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Sedes"
+                ],
+                "summary": "Crear sede",
+                "operationId": "5bfd771571873bfafbe26f64d6cc4285",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Sede Central"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sede creada"
+                    }
+                }
+            }
+        },
+        "/api/sedes/{id}": {
+            "put": {
+                "tags": [
+                    "Sedes"
+                ],
+                "summary": "Actualizar sede",
+                "operationId": "b53c2fdfd7e19e2be4e529c19606422f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la sede",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Sede Central"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sede actualizada"
+                    },
+                    "404": {
+                        "description": "Sede no encontrada"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Sedes"
+                ],
+                "summary": "Eliminar sede",
+                "operationId": "5cf9daa3fe988bf044a1c65785bf9e9c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la sede",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Sede eliminada"
+                    },
+                    "404": {
+                        "description": "Sede no encontrada"
                     }
                 }
             }
@@ -145,8 +2132,64 @@
     },
     "tags": [
         {
+            "name": "Aulas",
+            "description": "Aulas"
+        },
+        {
+            "name": "Ciudades",
+            "description": "Ciudades"
+        },
+        {
+            "name": "Clases",
+            "description": "Clases"
+        },
+        {
+            "name": "Clases Estudiantes",
+            "description": "Clases Estudiantes"
+        },
+        {
+            "name": "Clases Horarios",
+            "description": "Clases Horarios"
+        },
+        {
+            "name": "Clases Profesores",
+            "description": "Clases Profesores"
+        },
+        {
+            "name": "Direcciones",
+            "description": "Direcciones"
+        },
+        {
+            "name": "Estudiantes",
+            "description": "Estudiantes"
+        },
+        {
+            "name": "Grados",
+            "description": "Grados"
+        },
+        {
+            "name": "Notas",
+            "description": "Notas"
+        },
+        {
+            "name": "Paises",
+            "description": "Paises"
+        },
+        {
+            "name": "Periodos",
+            "description": "Periodos"
+        },
+        {
             "name": "Personas",
             "description": "Personas"
+        },
+        {
+            "name": "Profesores",
+            "description": "Profesores"
+        },
+        {
+            "name": "Sedes",
+            "description": "Sedes"
         }
     ]
 }

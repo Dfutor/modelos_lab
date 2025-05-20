@@ -3,35 +3,35 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Repository\PersonaRepository;
+use App\Repository\ClaseRepository;
 
 use Illuminate\Http\Request;
 
-class PersonaController extends Controller
+class ClaseController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/personas",
-     *     summary="Listar personas",
-     *     tags={"Personas"},
+     *     path="/api/clases",
+     *     summary="Listar clases",
+     *     tags={"Clases"},
      *     @OA\Response(
      *         response=200,
-     *         description="Lista de personas"
+     *         description="Lista de clases"
      *     )
      * )
      */
     public function index()
     {
-        $repository = new PersonaRepository();
-        $personas = $repository->index();
-        return $personas;
+        $repository = new ClaseRepository();
+        $clases = $repository->index();
+        return $clases;
     }
 
     /**
      * @OA\Post(
-     *     path="/api/personas",
-     *     summary="Crear persona",
-     *     tags={"Personas"},
+     *     path="/api/clases",
+     *     summary="Crear clase",
+     *     tags={"Clases"},
      *     @OA\RequestBody(
      *         required=true,
      *         @OA\JsonContent(
@@ -42,26 +42,26 @@ class PersonaController extends Controller
      *     ),
      *     @OA\Response(
      *         response=201,
-     *         description="Persona creada"
+     *         description="Clase creada"
      *     )
      * )
      */
     public function store(Request $request)
     {
-        $repository = new PersonaRepository();
-        $persona = $repository->create($request->all());
-        return $persona;
+        $repository = new ClaseRepository();
+        $clase = $repository->create($request->all());
+        return $clase;
     }
     /**
      * @OA\Put(
-     *     path="/api/personas/{id}",
-     *     summary="Actualizar persona",
-     *     tags={"Personas"},
+     *     path="/api/clases/{id}",
+     *     summary="Actualizar clase",
+     *     tags={"Clases"},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID de la persona",
+     *         description="ID de la clase",
      *         @OA\Schema(type="integer")
      *     ),
      *     @OA\RequestBody(
@@ -74,46 +74,46 @@ class PersonaController extends Controller
      *     ),
      *     @OA\Response(
      *         response=200,
-     *         description="Persona actualizada"
+     *         description="Clase actualizada"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Persona no encontrada"
+     *         description="Clase no encontrada"
      *     )
      * )
      */
     public function update(Request $request, $id)
     {
-        $repository = new PersonaRepository();
-        $persona = $repository->update($id, $request->all());
-        return $persona;
+        $repository = new ClaseRepository();
+        $clase = $repository->update($id, $request->all());
+        return $clase;
     }
 
     /**
      * @OA\Delete(
-     *     path="/api/personas/{id}",
-     *     summary="Eliminar persona",
-     *     tags={"Personas"},
+     *     path="/api/clases/{id}",
+     *     summary="Eliminar clase",
+     *     tags={"Clases"},
      *     @OA\Parameter(
      *         name="id",
      *         in="path",
      *         required=true,
-     *         description="ID de la persona",
+     *         description="ID de la clase",
      *         @OA\Schema(type="integer")
      *     ),
      *     @OA\Response(
      *         response=204,
-     *         description="Persona eliminada"
+     *         description="Clase eliminada"
      *     ),
      *     @OA\Response(
      *         response=404,
-     *         description="Persona no encontrada"
+     *         description="Clase no encontrada"
      *     )
      * )
      */
     public function destroy($id)
     {
-        $repository = new PersonaRepository();
+        $repository = new ClaseRepository();
         $repository->delete($id);
         return response()->noContent();
     }
